@@ -17,3 +17,6 @@ class FilmeViewSet(viewsets.ModelViewSet):
 class AvaliacaoViewSet(viewsets.ModelViewSet):
     queryset = Avaliacao.objects.filter(ativo=True)
     serializer_class = AvaliacaoSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(usuario=self.request.user)
