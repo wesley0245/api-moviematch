@@ -13,7 +13,9 @@ class FilmeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class AvaliacaoSerializer(serializers.ModelSerializer):
+
+    usuario = serializers.ReadOnlyField(source='usuario.username')
+
     class Meta:
         model = Avaliacao
         fields = '__all__'
-        read_only_fields = ['usuario']
